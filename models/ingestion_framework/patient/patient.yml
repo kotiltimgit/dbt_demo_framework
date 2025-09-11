@@ -14,8 +14,8 @@ models:
       job:                                             # -----------Configuration of Job details ----------------------------
         ingestion_tool_name: dbt cloud                      # Integration tool name used for loading the table
         job_name: job_dbt_hospital_src_load                  # Integration Job name used for loading the table
-        cron_schedule: "* * * 5 *"                          # Schedule of the job configured in integration tool
-        humanized_schedule: "Daily once at 5AM"             # Schedule of the job configured in integration tool
+        cron_schedule: "30 11 * * *"                          # Schedule of the job configured in integration tool
+        humanized_schedule: "Daily once at 5PM IST"             # Schedule of the job configured in integration tool
       source_location_conf:                             # ----------Configuration of Source object details and target table details -------
         file_type: json                                      # Type of file (csv|json|xml|parquet)
         filename: hospital.json                          # Name of the file 

@@ -13,9 +13,9 @@ models:
         active: true  # true|false                          # specify True if the source system is active
       job:                                             # -----------Configuration of Job details ----------------------------
         ingestion_tool_name: dbt cloud                      # Integration tool name used for loading the table
-        job_name: job_dbt_finance_src_load                  # Integration Job name used for loading the table
-        cron_schedule: "* * * 5 *"                          # Schedule of the job configured in integration tool
-        humanized_schedule: "Daily once at 5AM"             # Schedule of the job configured in integration tool
+        job_name: job_dbt_department_src_load                  # Integration Job name used for loading the table
+        cron_schedule: "30 7 * * *"                          # Schedule of the job configured in integration tool
+        humanized_schedule: "Daily once at 1 PM IST"             # Schedule of the job configured in integration tool
       source_location_conf:                             # ----------Configuration of Source object details and target table details -------
         file_type: csv                                      # Type of file (csv|json|xml|parquet)
         filename: Department.csv                          # Name of the file 
