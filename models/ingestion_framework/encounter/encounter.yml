@@ -40,7 +40,7 @@ models:
         schema: BRONZE                                      # Specify the schema name of stage table
         stage_table_name: STG_ENCOUNTER                            # Specify the name of the stage table      
       raw_table:     
-        primary_keys: ['PATIENT_ID', 'ENCOUNTER_ID']               # Specify the primary key to be used while creating DDL for Raw table
+        primary_keys: ['PATIENT_ID', 'ENCOUNTER_ID','DIAGNOSES','PROCEDURES','LAB_ORDER_ID']               # Specify the primary key to be used while creating DDL for Raw table
         database: "{{ env_var('DBT_ENV_DB') }}"                                  # Specify the  database name of raw table
         schema: BRONZE                                        # Specify the schema name of raw table
         raw_table_name: ENCOUNTER                                       # Specify the name of raw table
