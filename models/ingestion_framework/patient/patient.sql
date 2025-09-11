@@ -5,7 +5,7 @@
         database=env_var('DBT_ENV_DB'),
         schema='BRONZE',
         pre_hook=["{{ audit_logging_insert_macro() }}", "{{ ingestion_json_macro() }}"],
-        post_hook=["{{ file_archive_macro() }}", "{{ audit_logging_update_macro() }}"]
+        post_hook=["{{ audit_logging_update_macro() }}"]
     )
 }}
 
