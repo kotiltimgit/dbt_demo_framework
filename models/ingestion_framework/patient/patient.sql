@@ -33,5 +33,5 @@ t2.value:name:first::string as first_name,
 t2.value:name:full::string as full_name,
 t2.value:name:last::string as last_name,
 t2.value:patient_id::number as patient_id
-FROM DBT_DB_DEV.BRONZE.RAW_PATIENT STG,
+FROM {{env_var('DBT_ENV_DB')}}.BRONZE.RAW_PATIENT STG,
 lateral flatten( input => STG.RAW_DATA:patients ) t2
