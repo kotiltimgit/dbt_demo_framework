@@ -26,6 +26,7 @@
             ENVIRONMENT_NAME,
             JOB_ID,
             JOB_NAME,
+            RUN_ID,
             OBJECT_UID,
             OBJECT_NAME,
             OBJECT_TYPE,
@@ -85,7 +86,8 @@
         $20,
         $21,
         $22,
-        PARSE_JSON($23)
+        $23,
+        PARSE_JSON($24)
     FROM VALUES
 
     {% for node_object in results | selectattr("node.resource_type", "in", supported_resource_types) | list %}
@@ -97,6 +99,7 @@
             '{{ target.name }}',
             '{{ env_var('DBT_CLOUD_JOB_ID', '') }}',
             '{{ env_var('DBT_CLOUD_JOB_NAME', '') }}',
+            '{{ env_var('DBT_CLOUD_RUN_ID', '') }}',
             '{{ node_object.node.unique_id }}', {# 8. node_id #}
             '{{ node_object.node.name }}',
             '{{ node_object.node.resource_type }}',
