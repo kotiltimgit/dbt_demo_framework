@@ -82,9 +82,9 @@ models:
           source_column_position: $4               # Specify the poistion of source column in file
           sql_column_datatype: VARCHAR(200)                 # Specify the SQL data type to be considered while creating the target table
           copy_transformation_logic:                # Specify the copy transformation logic supported by the COPY INTO
-          transformation_logic:                     # Specify the transformation logic to be applied while loading from STG TO RAW table
+          transformation_logic:                     # Specify the transformation logic to be applied while loading from STG TO RAW table              
         tests:
-          - unique              
+          - unique
       - name: DEPT_ID                # Specify the column of your target table
         meta:
           contains_pii: false                       # Specify if PII information 
@@ -92,9 +92,9 @@ models:
           source_column_position: $5              # Specify the poistion of source column in file
           sql_column_datatype: INT                 # Specify the SQL data type to be considered while creating the target table
           copy_transformation_logic:                # Specify the copy transformation logic supported by the COPY INTO
-          transformation_logic:                     # Specify the transformation logic to be applied while loading from STG TO RAW table
+          transformation_logic:                     # Specify the transformation logic to be applied while loading from STG TO RAW table                 
         tests:
-          - unique                 
+          - unique
       - name: FILE_NAME                # Specify the column of your target table
         meta:
           raw_table: false            
@@ -113,6 +113,6 @@ models:
           source_column_position:              # Specify the poistion of source column in file
           sql_column_datatype: TIMESTAMP_NTZ(9)             # Specify the SQL data type to be considered while creating the target table
           copy_transformation_logic: current_timestamp()   # Specify the copy transformation logic supported by the COPY INTO
-          transformation_logic:  current_timestamp()       # Specify the transformation logic to be applied while loading from STG TO RAW table
+          transformation_logic:  current_timestamp()       # Specify the transformation logic to be applied while loading from STG TO RAW table       
         tests:
-          - unique         
+          - unique

@@ -1,4 +1,6 @@
 {% macro test_executions_result(database=target.database, schema=target.schema, table_identifier='TEST_EXECUTIONS_RESULT') %}
+    {% if execute %}
+
     {%- set test_executions_object = results | selectattr("node.resource_type", "equalto", "test") | list -%}
     {%- set relation_exists = adapter.get_relation(database=database, schema=schema, identifier=table_identifier) -%}
     {%- set relation = database ~ '.' ~ schema ~ '.' ~ table_identifier -%}
@@ -58,6 +60,7 @@
         {{ log("No Test Executions Were Identified in this Invocation", info=True) }}
 
     {% endif %}
+    {% endif %}
 
 {% endmacro %}
 
@@ -82,7 +85,6 @@
             '{{ invocation_id }}', {# 1. command_invocation_id -- Context Variable #}
             '{{ test_object.node.unique_id }}', {# 2. node_id #}
             '{{ run_started_at }}', {# 3. run_started_at -- Context Variable #}
-
             '{{ test_object.thread_id }}', {# 4. thread_id #}
             '{{ test_object.status }}', {# 5. status #}
             '{{ test_object.node.compiled_code}}', {# 6. compiled_query #}
@@ -102,7 +104,7 @@
                 {% for row in failure_records_table.rows %}
                     {% set row_records = {} %}
                     {% for col_name, col_value in row.items() %}
-                        {% do row_records.update({col_name: col_value}) %}
+                        {% do row_records.update({col_name: safe_tojson(col_value)}) %}
                     {% endfor %}
                     {% do failure_records.append(row_records) %}
                 {% endfor %}
@@ -116,5 +118,26 @@
     {% endset %}
 
     {{ select_sql }}
+
+{% endmacro %}
+
+{% macro safe_tojson(obj) %}
+    {# Recursively convert problematic datatypes to safe JSON-friendly values #}
+    {% if obj is none %}
+        {{ return(none) }}
+
+    {% elif obj is string %}
+        {{ return(obj) }}
+
+    {% elif obj is number %}
+        {{ return(obj) }}
+
+    {% elif obj is boolean %}
+        {{ return(obj) }}
+
+    {% else %}
+        {{ return(obj | string) }}   {# fallback: stringify any unknown type #}
+
+    {% endif %}
 
 {% endmacro %}

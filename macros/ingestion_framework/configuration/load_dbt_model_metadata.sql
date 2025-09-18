@@ -61,7 +61,7 @@
         (
             '{{ model.unique_id }}', {# 1. model_unique_id #}
             '{{ model.name }}', {# 2. model_name #}
-            '{{ tojson(model)  | replace("\\", "\\\\") | replace("'", "\\'") | replace('"', '\\"') }}' {# 3. model_yaml #}
+            '{{ tojson(model)  | replace("\\", "\\\\") | replace("'", "\\'") | replace('"', '\\"') }}' {# 3. model_yaml -- json format #}
         )
         {%- if not loop.last %},{%- endif %}
 
