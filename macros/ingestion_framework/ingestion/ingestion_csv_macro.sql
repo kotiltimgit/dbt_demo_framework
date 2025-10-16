@@ -13,16 +13,19 @@
     {%- set primary_keys = model.meta.raw_table.get('primary_keys') -%}
     {%- set stage_table_flag = model.meta.stage_table.get('enabled') -%}
 
+    {%- set incremental_files = ingestion_incremental_macro() | default([]) -%}
+
     {# Variable Declaration - Snowflake Properties #}
     {%- set stage_name = model.meta.source_location_conf.get('stage_name') -%}
+    {%- set location_path = model.meta.source_location_conf.get('stage_landing_path') -%}
     {#
     For single file: Path must be point out to the file (e.g. - 'path/to/the/file.csv' [OR] 'path/to/the/file.json' [OR] .....)
     For multiple files: Path must be point out to the folder/directory/ (e.g. - 'path/to/the/directory/')
     #}
-    {%- set location_path = model.meta.source_location_conf.get('stage_landing_path') -%}
-    {%- set file_name = model.meta.source_location_conf.get('filename') -%}
-    {%- set files = model.meta.source_location_conf.get('files') | default(None) -%}
-    {%- set pattern = model.meta.source_location_conf.get('pattern') -%}
+    {%- set file_name = incremental_files[0] if incremental_files | length == 1 else model.meta.source_location_conf.get('filename') -%}
+    {%- set files = incremental_files if incremental_files | length > 1 else model.meta.source_location_conf.get('files') -%}
+    {#{%- set pattern = model.meta.source_location_conf.get('pattern') -%}#}
+    {%- set pattern = '' -%}
     {%- set file_format_name = model.meta.source_location_conf.get('file_format') -%}
     {%- set copy_options = model.meta.source_location_conf.get('copy_options') -%}
     {%- set validation_mode = model.meta.source_location_conf.get('validation_mode') -%}
@@ -64,10 +67,10 @@
             )
             {% if files -%}
             files = ({{ files | trim('[]') }})
-            {%- endif -%}
+            {%- endif %}
             {% if pattern -%}
             pattern = '{{ pattern }}'
-            {%- endif -%}
+            {%- endif %}
             file_format = (format_name = '{{ file_format_name }}')
             {% if copy_options -%}
             {{ copy_options }}
@@ -186,7 +189,7 @@
 
 {% macro ddl_column_definition(column_definition, primary_key_columns) %}
     {% for col_def in column_definition.values() %}
-        {{ col_def.name }} {{ col_def.meta.sql_column_datatype }},
+        {{ col_def.name }} {{ col_def.data_type }} COMMENT '{{ col_def.description }}',
     {% endfor %}
     primary key ({{ primary_key_columns | join(", ") }})
 
