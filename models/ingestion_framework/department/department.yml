@@ -46,52 +46,57 @@ models:
         raw_table_name: DEPARTMENT                                       # Specify the name of raw table
     columns:
       - name: DEPARTMENT_ID # required               # Specify the column of your target table
+        data_type: INT
+        description: ""
         meta:
           contains_pii: false                       # Specify if PII information 
           source_column: Dept_Id                # Specify source column mapped to the corresponding target column
           source_column_position: $1                # Specify the poistion of source column in file
-          sql_column_datatype: INT                  # Specify the SQL data type to be considered while creating the target table
           copy_transformation_logic:                # Specify the copy transformation logic supported by the COPY INTO
           transformation_logic:                     # Specify the transformation logic to be applied while loading from STG TO RAW table
         tests:
           - unique
       - name: DEPARTMENT_NAME # required               # Specify the column of your target table
+        data_type: VARCHAR(200)
+        description: ""
         meta:
           contains_pii: false                       # Specify if PII information 
           source_column: Department_Name                # Specify source column mapped to the corresponding target column
           source_column_position: $2               # Specify the poistion of source column in file
-          sql_column_datatype: VARCHAR(200)                  # Specify the SQL data type to be considered while creating the target table
           copy_transformation_logic:                # Specify the copy transformation logic supported by the COPY INTO
           transformation_logic:                     # Specify the transformation logic to be applied while loading from STG TO RAW table
         tests:
           - unique
       - name: DEPARTMENT_HEAD               # Specify the column of your target table
+        data_type: VARCHAR(200)
+        description: ""
         meta:
           contains_pii: false                       # Specify if PII information 
           source_column: Department_Head                # Specify source column mapped to the corresponding target column
           source_column_position: $3               # Specify the poistion of source column in file
-          sql_column_datatype: VARCHAR(200)                 # Specify the SQL data type to be considered while creating the target table
           copy_transformation_logic:                # Specify the copy transformation logic supported by the COPY INTO
           transformation_logic:                     # Specify the transformation logic to be applied while loading from STG TO RAW table
         tests:
           - unique
       - name: FILE_NAME                # Specify the column of your target table
+        data_type: VARCHAR(500)
+        description: ""
         meta:
           raw_table: false            
           contains_pii: false                      # Specify if PII information 
           source_column:                  # Specify source column mapped to the corresponding target column
           source_column_position:              # Specify the poistion of source column in file
-          sql_column_datatype: VARCHAR(500)                 # Specify the SQL data type to be considered while creating the target table
           copy_transformation_logic: metadata$filename   # Specify the copy transformation logic supported by the COPY INTO
           transformation_logic:                  # Specify the transformation logic to be applied while loading from STG TO RAW table
         tests:
           - unique
       - name: ETL_LOADED_TIME                # Specify the column of your target table
+        data_type: TIMESTAMP_NTZ(9)
+        description: ""
         meta:
           contains_pii: false                       # Specify if PII information 
           source_column:                  # Specify source column mapped to the corresponding target column
           source_column_position:              # Specify the poistion of source column in file
-          sql_column_datatype: TIMESTAMP_NTZ(9)             # Specify the SQL data type to be considered while creating the target table
           copy_transformation_logic: current_timestamp()   # Specify the copy transformation logic supported by the COPY INTO
           transformation_logic:  current_timestamp()       # Specify the transformation logic to be applied while loading from STG TO RAW table
         tests:
