@@ -47,109 +47,109 @@ models:
         flatten: ['encounters', 'encounters:diagnoses', 'encounters:procedures', 'encounters:labs']
     columns:
       - name: ENCOUNTER_ID # required               # Specify the column of your target table
+        data_type: NUMBER
         meta:
           contains_pii: false                       # Specify if PII information 
           path: encounters:encounter_id
-          sql_column_datatype: NUMBER
         tests:
           - unique
       - name: PATIENT_ID # required               # Specify the column of your target table
+        data_type: NUMBER
         meta:
           contains_pii: false                       # Specify if PII information 
           path: encounters:patient_id
-          sql_column_datatype: NUMBER
       - name: DOCTOR_ID # required               # Specify the column of your target table
+        data_type: NUMBER
         meta:
           contains_pii: false                       # Specify if PII information 
           path: encounters:doctor_id
-          sql_column_datatype: NUMBER
       - name: DEPARTMENT_ID # required               # Specify the column of your target table
+        data_type: NUMBER
         meta:
           contains_pii: false                       # Specify if PII information 
           path: encounters:dept_id
-          sql_column_datatype: NUMBER
       - name: ADMIT_DATETIME # required               # Specify the column of your target table
+        data_type: TIMESTAMP
         meta:
           contains_pii: false                       # Specify if PII information 
-          path: encounters:admission:admit_datetime
-          sql_column_datatype: TIMESTAMP    
+          path: encounters:admission:admit_datetime  
       - name: DISCHARGE_DATETIME # required               # Specify the column of your target table
+        data_type: TIMESTAMP
         meta:
           contains_pii: false                       # Specify if PII information 
           path: encounters:admission:discharge_datetime
-          sql_column_datatype: TIMESTAMP    
       - name: ADMIT_TYPE # required               # Specify the column of your target table
+        data_type: STRING
         meta:
           contains_pii: false                       # Specify if PII information 
           path: encounters:admission:type
-          sql_column_datatype: STRING
       - name: ADMIT_ROOM # required               # Specify the column of your target table
+        data_type: STRING
         meta:
           contains_pii: false                       # Specify if PII information 
-          path: encounters:admission:room
-          sql_column_datatype: STRING        
+          path: encounters:admission:room        
       - name: ADMIT_BED # required               # Specify the column of your target table
+        data_type: NUMBER
         meta:
           contains_pii: false                       # Specify if PII information 
           path: encounters:admission:bed
-          sql_column_datatype: NUMBER
       - name: DIAGNOSES # required               # Specify the column of your target table
+        data_type: STRING
         meta:
           contains_pii: false                       # Specify if PII information 
           path: encounters:diagnoses
-          sql_column_datatype: STRING
       - name: PROCEDURES # required               # Specify the column of your target table
+        data_type: STRING
         meta:
           contains_pii: false                       # Specify if PII information 
           path: encounters:procedures
-          sql_column_datatype: STRING
       - name: LAB_ORDER_ID # required               # Specify the column of your target table
+        data_type: STRING
         meta:
           contains_pii: false                       # Specify if PII information 
           path: encounters:labs:order_id
-          sql_column_datatype: STRING
       - name: LAB_TEST_NAME # required               # Specify the column of your target table
+        data_type: STRING
         meta:
           contains_pii: false                       # Specify if PII information 
           path: encounters:labs:test_name
-          sql_column_datatype: STRING
       - name: LAB_STATUS # required               # Specify the column of your target table
+        data_type: STRING
         meta:
           contains_pii: false                       # Specify if PII information 
           path: encounters:labs:status
-          sql_column_datatype: STRING
       - name: LAB_RESULT # required               # Specify the column of your target table
+        data_type: STRING
         meta:
           contains_pii: false                       # Specify if PII information 
           path: encounters:labs:result
-          sql_column_datatype: STRING
       - name: BILL_CURRENCY # required               # Specify the column of your target table
+        data_type: STRING
         meta:
           contains_pii: false                       # Specify if PII information 
           path: encounters:billing:currency
-          sql_column_datatype: STRING
       - name: BILL_ROOM_CHARGES # required               # Specify the column of your target table
+        data_type: NUMBER
         meta:
           contains_pii: false                       # Specify if PII information 
           path: encounters:billing:summary:room_charges
-          sql_column_datatype: NUMBER
       - name: BILL_PROCEDURES # required               # Specify the column of your target table
+        data_type: NUMBER
         meta:
           contains_pii: false                       # Specify if PII information 
           path: encounters:billing:summary:procedures
-          sql_column_datatype: NUMBER
       - name: BILL_LABS # required               # Specify the column of your target table
+        data_type: NUMBER
         meta:
           contains_pii: false                       # Specify if PII information 
           path: encounters:billing:summary:labs
-          sql_column_datatype: NUMBER
       - name: BILL_MEDICATIONS # required               # Specify the column of your target table
+        data_type: NUMBER
         meta:
           contains_pii: false                       # Specify if PII information 
           path: encounters:billing:summary:medications
-          sql_column_datatype: NUMBER
       - name: BILL_TOTAL # required               # Specify the column of your target table
+        data_type: NUMBER
         meta:
           contains_pii: false                       # Specify if PII information 
           path: encounters:billing:summary:total
-          sql_column_datatype: NUMBER

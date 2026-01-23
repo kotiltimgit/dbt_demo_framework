@@ -47,44 +47,44 @@ models:
         flatten: ['data']
     columns:
       - name: RUN_ID # required               # Specify the column of your target table
+        data_type: NUMBER
         meta:
           contains_pii: false                       # Specify if PII information 
           path: data:id
-          sql_column_datatype: NUMBER
         tests:
           - unique
       - name: JOB_ID # required               # Specify the column of your target table
+        data_type: NUMBER
         meta:
           contains_pii: false                       # Specify if PII information 
           path: data:job_id
-          sql_column_datatype: NUMBER
       - name: PROJECT_ID # required               # Specify the column of your target table
+        data_type: NUMBER
         meta:
           contains_pii: false                       # Specify if PII information 
           path: data:project_id
-          sql_column_datatype: NUMBER
       - name: ENVIRONMENT_ID # required               # Specify the column of your target table
+        data_type: NUMBER
         meta:
           contains_pii: false                       # Specify if PII information 
           path: data:environment_id
-          sql_column_datatype: NUMBER
       - name: ACCOUNT_ID # required               # Specify the column of your target table
+        data_type: NUMBER
         meta:
           contains_pii: false                       # Specify if PII information 
           path: extra:filters:account_id
-          sql_column_datatype: NUMBER
       - name: STARTED_AT # required               # Specify the column of your target table
+        data_type: TIMESTAMP
         meta:
           contains_pii: false                       # Specify if PII information 
-          path: data:started_at
-          sql_column_datatype: TIMESTAMP    
+          path: data:started_at 
       - name: FINISHED_AT # required               # Specify the column of your target table
+        data_type: TIMESTAMP
         meta:
           contains_pii: false                       # Specify if PII information 
           path: data:finished_at
-          sql_column_datatype: TIMESTAMP
       - name: STATUS_CODE # required               # Specify the column of your target table
+        data_type: NUMBER
         meta:
           contains_pii: false                       # Specify if PII information 
           path: status:code
-          sql_column_datatype: NUMBER

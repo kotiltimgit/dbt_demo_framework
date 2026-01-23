@@ -47,39 +47,39 @@ models:
         flatten: ['appointments']
     columns:
       - name: APPOINTMENT_ID # required               # Specify the column of your target table
+        data_type: NUMBER
         meta:
           contains_pii: false                       # Specify if PII information 
           path: appointments:appointment_id
-          sql_column_datatype: NUMBER
         tests:
           - unique
       - name: PATIENT_ID # required               # Specify the column of your target table
+        data_type: NUMBER
         meta:
           contains_pii: false                       # Specify if PII information 
           path: appointments:patient_id
-          sql_column_datatype: NUMBER
       - name: DOCTOR_ID # required               # Specify the column of your target table
+        data_type: NUMBER
         meta:
           contains_pii: false                       # Specify if PII information 
           path: appointments:doctor_id
-          sql_column_datatype: NUMBER
       - name: DEPARTMENT_ID # required               # Specify the column of your target table
+        data_type: NUMBER
         meta:
           contains_pii: false                       # Specify if PII information 
           path: appointments:dept_id
-          sql_column_datatype: NUMBER
       - name: DATETIME # required               # Specify the column of your target table
+        data_type: TIMESTAMP
         meta:
           contains_pii: false                       # Specify if PII information 
-          path: appointments:datetime
-          sql_column_datatype: TIMESTAMP    
+          path: appointments:datetime  
       - name: REASON # required               # Specify the column of your target table
+        data_type: STRING
         meta:
           contains_pii: false                       # Specify if PII information 
           path: appointments:reason
-          sql_column_datatype: STRING
       - name: STATUS # required               # Specify the column of your target table
+        data_type: STRING
         meta:
           contains_pii: false                       # Specify if PII information 
           path: appointments:status
-          sql_column_datatype: STRING

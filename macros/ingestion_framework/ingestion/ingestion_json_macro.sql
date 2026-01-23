@@ -193,10 +193,10 @@
 
             {% endif %}
             {%- set lateral_flatten_alias = 'lf' ~ (flatten_keys.index(flatten_key_field) + 1) ~ '.value' -%}
-            {{ col_path | replace(flatten_key_field, lateral_flatten_alias) }}::{{ col_def.meta.sql_column_datatype }} as {{ col_def.name }}{% if not loop.last %}, {% endif %}
+            {{ col_path | replace(flatten_key_field, lateral_flatten_alias) }}::{{ col_def.data_type }} as {{ col_def.name }}{% if not loop.last %}, {% endif %}
         
         {% else %}
-            STG.RAW_DATA:{{ col_path }}::{{ col_def.meta.sql_column_datatype }} as {{ col_def.name }}{% if not loop.last %}, {% endif %}
+            STG.RAW_DATA:{{ col_path }}::{{ col_def.data_type }} as {{ col_def.name }}{% if not loop.last %}, {% endif %}
 
         {% endif %}
         
