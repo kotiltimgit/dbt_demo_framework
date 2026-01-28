@@ -17,7 +17,7 @@
             ;
         {% endset %}
         {%- set last_success_run_query_result = run_query(last_success_run_query) -%}
-        {%- set last_success_run_timestamp = last_success_run_query_result.columns[0].values()[0] -%}
+        {%- set last_success_run_timestamp = last_success_run_query_result.columns[0].values()[0] if last_success_run_query_result.columns[0].values()[0] else '19700101000000' -%}
         {#{{ log("SUCCESS QUERY RESULT ----> " ~ last_success_run_timestamp, info=True) }}#}
         
         {%- set stage_name = model.meta.source_location_conf.stage_name -%}
