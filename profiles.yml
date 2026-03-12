@@ -1,11 +1,13 @@
 dbt_demo_framework:
-target: dev
-outputs:
-  dev:
-    type: snowflake
-    account: 'not needed'
-    user: 'not needed'
-    role: DBTROLE
-    database: DBT_DB_DEV
-    schema: BRONZE
-    warehouse: DBT_WH
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: your_account_region
+      user: DBTUSER
+      password: your_password
+      role: DBTROLE
+      database: DBT_DB_DEV
+      warehouse: DBT_WH
+      schema: BRONZE
+      threads: 4
