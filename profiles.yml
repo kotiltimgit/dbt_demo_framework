@@ -1,4 +1,4 @@
-dbt_demo_framework:
+default:
   target: dev
   outputs:
     dev:
