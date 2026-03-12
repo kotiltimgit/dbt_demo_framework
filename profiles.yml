@@ -1,0 +1,13 @@
+default:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: your_account_region
+      user: DBTUSER
+      password: your_password
+      role: DBTROLE
+      database: DBT_DB_DEV
+      warehouse: DBT_WH
+      schema: BRONZE
+      threads: 4
