@@ -11,6 +11,6 @@
 
 {{ ingestion_json_macro() }}
 
-{#{{ file_archive_macro() }}#}
+{{{ file_archive_macro() }}}
 
 {{ audit_logging_update_macro() }}
